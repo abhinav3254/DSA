@@ -121,11 +121,31 @@ public class Two {
         
     }
 
+    public void searchNode() {
+        System.out.println("Enter Node for search :- ");
+        int data = sc.nextInt();
+
+        Node temp = head;
+        int count = 0;
+        while (temp != null) {
+            count = count+1;
+            if(data == temp.data) {
+                System.out.println("Element found at index:- "+count);
+                return;
+            }
+            temp = temp.next;
+        }
+
+        System.out.println("Element Not Found");
+    }
+
     public static void main(String[] args) {
         Two two = new Two();
         two.insertNode();
         two.printList();
         System.out.println("Length of the Linked List is :- "+two.length());
         two.deleteNode();
+
+        two.searchNode();
     }
 }
