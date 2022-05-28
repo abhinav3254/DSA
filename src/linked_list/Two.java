@@ -74,9 +74,58 @@ public class Two {
         System.out.println(" X ");
     }
 
+
+    private int length () {
+        int count = 0;
+        Node temp = head;
+        while(temp != null) {
+            temp = temp.next;
+            count++;
+        } 
+        return count;
+    }
+
+    public void deleteNode() {
+        printList();
+        System.out.println("Enter index which you want to delete");
+        int index = sc.nextInt();
+
+        Node temp = head;
+        Node temp1 = temp.next;
+        
+        if(index == 1) {
+            head = head.next;
+            printList();
+            return;
+        } 
+
+        if(index == length()) {
+            Node tempNew = head;
+            while (tempNew.next.next!=null) {
+                tempNew = tempNew.next;
+            }
+            tempNew.next = null;
+            printList();
+            return;
+        }
+
+        else {
+            for(int i = 1;i<index-1;i++) {
+                temp = temp.next;
+                temp1 = temp1.next;
+            }
+            temp.next = temp1.next;
+            printList();
+            return;
+        }
+        
+    }
+
     public static void main(String[] args) {
         Two two = new Two();
         two.insertNode();
         two.printList();
+        System.out.println("Length of the Linked List is :- "+two.length());
+        two.deleteNode();
     }
 }
