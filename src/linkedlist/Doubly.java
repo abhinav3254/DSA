@@ -1,13 +1,13 @@
 package linkedlist;
 
-public class Doubly {
+public class Doubly<T> {
 
-	private Node head;
-	private Node tail;
-	private Node helper;
+	private Node<T> head;
+	private Node<T> tail;
+	private Node<T> helper;
 
-	public void insertData(int data) {
-		Node node = new Node(data);
+	public void insertData(T data) {
+		Node<T> node = new Node<T>(data);
 		if (head == null) {
 			head = node;
 			tail = head;
@@ -21,7 +21,7 @@ public class Doubly {
 	}
 
 	public void printFromOne() {
-		Node t = head;
+		Node<T> t = head;
 		while (t != null) {
 			System.out.print(t.data + "  ");
 			t = t.next;
@@ -29,7 +29,7 @@ public class Doubly {
 	}
 
 	public void printFromLast() {
-		Node temp = tail;
+		Node<T> temp = tail;
 
 		while (temp != null) {
 			System.out.print(temp.data + "  ");
@@ -42,12 +42,12 @@ public class Doubly {
 	 * Making inner class because we can't place two class with same name
 	 * in same package so it's better to make to it inside
 	 */
-	static class Node {
-		Node prev;
-		int data;
-		Node next;
+	static class Node<T> {
+		Node<T> prev;
+		T data;
+		Node<T> next;
 
-		Node(int data) {
+		Node(T data) {
 			prev = null;
 			this.data = data;
 			next = null;
@@ -55,11 +55,11 @@ public class Doubly {
 	}
 
 	public static void main(String[] args) {
-		Doubly two = new Doubly();
-		two.insertData(10);
-		two.insertData(20);
-		two.insertData(30);
-		two.insertData(40);
+		Doubly<String> two = new Doubly<>();
+		two.insertData("10");
+		two.insertData("20");
+		two.insertData("30");
+		two.insertData("Last");
 
 		System.out.println("Printing From Start :- ");
 		two.printFromOne();

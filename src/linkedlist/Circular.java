@@ -1,13 +1,13 @@
 package linkedlist;
 
-public class Circular {
+public class Circular<T> {
 	
-	private Node head;
-	private Node tail;
-	private Node helper;
+	private Node<T> head;
+	private Node<T> tail;
+	private Node<T> helper;
 	
-	public void insertData(int data) {
-		Node node = new Node(data);
+	public void insertData(T data) {
+		Node<T> node = new Node<T>(data);
 		if (head == null) {
 			this.head = node;
 			this.tail = node;
@@ -45,7 +45,7 @@ public class Circular {
 	 * print the elements
 	 * */
 	public void printFromStart() {
-		Node temp = head;
+		Node<T> temp = head;
 		do {
 			
 			System.out.print(temp.data+" ");
@@ -55,7 +55,7 @@ public class Circular {
 	}
 	
 	public static void main(String[] args) {
-		Circular circular = new Circular();
+		Circular<Integer> circular = new Circular<Integer>();
 		circular.insertData(10);
 		circular.insertData(20);
 		circular.insertData(30);
@@ -65,12 +65,12 @@ public class Circular {
 		circular.printFromStart();
 	}
 	
-	static class Node {
-		Node prev;
-		int data;
-		Node next;
+	static class Node<T> {
+		Node<T> prev;
+		T data;
+		Node<T> next;
 		
-		Node (int data) { this.data = data; }
+		Node (T data) { this.data = data; }
 	}
 	
 }
