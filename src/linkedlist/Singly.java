@@ -1,16 +1,16 @@
 package linkedlist;
 
-public class Singly {
+public class Singly<T> {
 
-	private Node head;
+	private Node<T> head;
 
-	public void insertData(int data) {
-		Node node = new Node(data);
+	public void insertData(T data) {
+		Node<T> node = new Node<T>(data);
 		
 		if (head == null) {
 			head = node;
 		} else {
-			Node temp = head;
+			Node<T> temp = head;
 			while (temp.next != null) {
 				temp = temp.next;
 			}
@@ -20,7 +20,7 @@ public class Singly {
 	
 	public int getLengthOfLinkedList() {
 		int count = -1;
-		Node temp = head;
+		Node<T> temp = head;
 		while (temp != null) {
 			temp = temp.next;
 			count = count+1;
@@ -28,25 +28,25 @@ public class Singly {
 		return count;
 	}
 	
-	public void insertAtStart(int data) {
-		Node node = new Node(data);
+	public void insertAtStart(T data) {
+		Node<T> node = new Node<T>(data);
 		
-		Node temp = head;
+		Node<T> temp = head;
 		head = node;
 		head.next = temp;
 	}
 	
-	public void insertAtEnd(int data) {
-		Node node = new Node(data);
+	public void insertAtEnd(T data) {
+		Node<T> node = new Node<T>(data);
 		
-		Node temp = head;
+		Node<T> temp = head;
 		while (temp.next!=null) {
 			temp = temp.next;
 		}
 		temp.next = node;
 	}
 	
-	public void insertAt(int index,int data) {
+	public void insertAt(int index,T data) {
 //		index start from 0
 		if (index == 0) {
 //			go to insertAtStart
@@ -59,15 +59,15 @@ public class Singly {
 		} else {
 			// starting from one because temp1 is at index 1 that's why
 			int count = 1;
-			Node temp1 = head.next;
-			Node tempHelper1 = head;
+			Node<T> temp1 = head.next;
+			Node<T> tempHelper1 = head;
 			while (true) {
 				if (count == index) break;
 				temp1 = temp1.next;
 				tempHelper1 = tempHelper1.next;
 				count = count + 1;
 			}
-			Node node = new Node(data);
+			Node<T> node = new Node<T>(data);
 			tempHelper1.next = node;
 			node.next = temp1;
 			
@@ -75,7 +75,7 @@ public class Singly {
 	}
 
 	public void printAll() {
-		Node temp = head;
+		Node<T> temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " --> ");
 			temp = temp.next;
@@ -83,9 +83,9 @@ public class Singly {
 		System.out.println(" X ");
 	}
 	
-	public int getElementAt(int index) {
+	public T getElementAt(int index) {
 		
-		Node temp = head;
+		Node<T> temp = head;
 		int i = 0;
 		
 		while (temp!=null) {
@@ -95,18 +95,18 @@ public class Singly {
 			i++;
 		}
 		
-		return -1;
+		return null;
 	}
 
 	/**
 	 * Making inner class because we can't place two class with same name
 	 * in same package so it's better to make to it inside
 	 */
-	static class Node {
-		int data;
-		Node next;
+	static class Node<T> {
+		T data;
+		Node<T> next;
 
-		Node(int data) {
+		Node(T data) {
 			this.data = data;
 			this.next = null;
 		}
@@ -115,19 +115,19 @@ public class Singly {
 	public static void main(String[] args) {
 //		Linked List counting start from 0th index
 		
-		Singly one = new Singly();
-		one.insertData(10);
-		one.insertData(20);
-		one.insertData(30);
-		one.insertData(40);
+		Singly<String> one = new Singly<String>();
+		one.insertData("Raman");
+		one.insertData("Mohan");
+		one.insertData("Shyam");
+		one.insertData("Rahul");
 		
 		one.printAll();
 		System.out.println("length of linked list :- "+one.getLengthOfLinkedList());
 		
-		one.insertAt(1, 11);
-		one.insertAtStart(12);
+		one.insertAt(1, "insertAt");
+		one.insertAtStart("start");
 		
-		one.insertAtEnd(99);
+		one.insertAtEnd("insert at end");
 		one.printAll();
 		
 		System.out.println("Element at 1th index is "+one.getElementAt(0));
