@@ -3,29 +3,99 @@ package linkedlist;
 public class Singly {
 
 	private Node head;
-	private Node temp;
 
 	public void insertData(int data) {
 		Node node = new Node(data);
-		;
+		
 		if (head == null) {
 			head = node;
 		} else {
-			temp = head;
+			Node temp = head;
 			while (temp.next != null) {
 				temp = temp.next;
 			}
 			temp.next = node;
 		}
 	}
+	
+	public int getLengthOfLinkedList() {
+		int count = -1;
+		Node temp = head;
+		while (temp != null) {
+			temp = temp.next;
+			count = count+1;
+		}
+		return count;
+	}
+	
+	public void insertAtStart(int data) {
+		Node node = new Node(data);
+		
+		Node temp = head;
+		head = node;
+		head.next = temp;
+	}
+	
+	public void insertAtEnd(int data) {
+		Node node = new Node(data);
+		
+		Node temp = head;
+		while (temp.next!=null) {
+			temp = temp.next;
+		}
+		temp.next = node;
+	}
+	
+	public void insertAt(int index,int data) {
+//		index start from 0
+		if (index == 0) {
+//			go to insertAtStart
+			insertAtStart(data);
+		} else if (index == getLengthOfLinkedList()) {
+//			go to insertAtLast
+			insertAtEnd(data);
+		} else if (index > getLengthOfLinkedList()) {
+			System.out.println("Index Out Of Bound");
+		} else {
+			// starting from one because temp1 is at index 1 that's why
+			int count = 1;
+			Node temp1 = head.next;
+			Node tempHelper1 = head;
+			while (true) {
+				if (count == index) break;
+				temp1 = temp1.next;
+				tempHelper1 = tempHelper1.next;
+				count = count + 1;
+			}
+			Node node = new Node(data);
+			tempHelper1.next = node;
+			node.next = temp1;
+			
+		}
+	}
 
 	public void printAll() {
-		temp = head;
+		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " --> ");
 			temp = temp.next;
 		}
 		System.out.println(" X ");
+	}
+	
+	public int getElementAt(int index) {
+		
+		Node temp = head;
+		int i = 0;
+		
+		while (temp!=null) {
+			if (i == index)
+				return temp.data;
+			temp = temp.next;
+			i++;
+		}
+		
+		return -1;
 	}
 
 	/**
@@ -50,7 +120,16 @@ public class Singly {
 		one.insertData(20);
 		one.insertData(30);
 		one.insertData(40);
-
+		
 		one.printAll();
+		System.out.println("length of linked list :- "+one.getLengthOfLinkedList());
+		
+		one.insertAt(1, 11);
+		one.insertAtStart(12);
+		
+		one.insertAtEnd(99);
+		one.printAll();
+		
+		System.out.println("Element at 1th index is "+one.getElementAt(0));
 	}
 }
