@@ -1,0 +1,55 @@
+# Eclipse
+.metadata/
+*.tmp
+*.bak
+*.swp
+*~.nib
+.localhistory/
+.DS_Store
+.settings/
+.loadpath
+.recommenders/
+.project
+.classpath
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Java general
+*.class
+*.log
+*.jar
+*.war
+*.ear
+hs_err_pid*
+target/
+bin/
+build/
+
+# Maven
+log/
+dependency-reduced-pom.xml
+release.properties
+buildNumber.properties
+.mvn/timing.properties
+
+# Gradle
+.gradle/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# OS-specific
+Thumbs.db
+.DS_Store
